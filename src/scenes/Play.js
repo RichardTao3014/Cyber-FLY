@@ -20,7 +20,7 @@ class Play extends Phaser.Scene {
     this.ship01 = new Enemy(this, game.config.width + borderUISize*6, borderUISize*6, 'Enemy', 0, 5).setOrigin(0, 0)
     this.ship02 = new Enemy(this, game.config.width + borderUISize*3, borderUISize*7 + borderPadding*2, 'Enemy', 0, 5).setOrigin(0,0)
     this.ship03 = new Enemy(this, game.config.width, borderUISize*6 + borderPadding*9, 'Enemy', 0, 5).setOrigin(0,0)
-    this.ship04 = new Enemy(this, game.config.width, borderUISize*7 + borderPadding*9, 'Heart', 0, 5).setOrigin(0,0)
+    this.ship04 = new Enemy(this, game.config.width, borderUISize*9 + borderPadding*8, 'Heart', 0, 5).setOrigin(0,0)
 
 
         this.p1Rocket = new Player(
@@ -107,7 +107,7 @@ class Play extends Phaser.Scene {
           this.p1Score -= 5
           this.scoreLeft.text = this.p1Score 
         }
-        if (this.checkCollision(this.p1Rocket, this.ship01)) {
+        if (this.checkCollision(this.p1Rocket, this.ship04)) {
           this.ship04.reset()
           // score add and text update
           this.p1Score += 10

@@ -1,6 +1,6 @@
 // src/main.js
 /**
- * Game Name: Cyber Jumper
+ * Game Name: Cyber Fly
  * Auther: Richard Tao
  * Development time: 25 H
  */

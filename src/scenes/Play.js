@@ -20,13 +20,13 @@ class Play extends Phaser.Scene {
     this.ship01 = new Enemy(this, game.config.width + borderUISize*6, borderUISize*6, 'Enemy', 0, 5).setOrigin(0, 0)
     this.ship02 = new Enemy(this, game.config.width + borderUISize*3, borderUISize*7 + borderPadding*2, 'Enemy', 0, 5).setOrigin(0,0)
     this.ship03 = new Enemy(this, game.config.width, borderUISize*6 + borderPadding*9, 'Enemy', 0, 5).setOrigin(0,0)
-    this.ship04 = new Enemy(this, game.config.width, borderUISize*9 + borderPadding*8, 'Heart', 0, 5).setOrigin(0,0)
+    this.ship04 = new Enemy(this, game.config.width, borderUISize*3 + borderPadding*5, 'Heart', 0, 5).setOrigin(0,0)
 
 
         this.p1Rocket = new Player(
           this, 
-          borderUISize + borderPadding,  // 火箭在左侧
-          game.config.height / 2,  // 让火箭垂直居中
+          borderUISize + borderPadding,  // 玩家在左侧
+          game.config.height / 2,  // 让玩家垂直居中
           'Player'
       ).setOrigin(0, 0.5);  // 左上角对齐，保证正确位置
 

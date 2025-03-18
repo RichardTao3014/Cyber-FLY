@@ -21,12 +21,6 @@ class Play extends Phaser.Scene {
     this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
     this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0)
 
-    // add spaceships (x3)
-    // this.ship01 = new Enemy(this, game.config.width + borderUISize*6, borderUISize*6, 'Enemy', 0, 5).setOrigin(0, 0)
-    // this.ship02 = new Enemy(this, game.config.width + borderUISize*3, borderUISize*7 + borderPadding*2, 'Enemy', 0, 5).setOrigin(0,0)
-    // this.ship03 = new Enemy(this, game.config.width, borderUISize*5 + borderPadding*7, 'Enemy', 0, 5).setOrigin(0,0)
-    // this.ship04 = new Enemy(this, game.config.width, borderUISize*4 + borderPadding*5, 'Heart', 0, 5).setOrigin(0,0)
-
      // 随机生成炸弹（Enemy）
      this.ship01 = new Enemy(
       this,

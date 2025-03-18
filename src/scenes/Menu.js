@@ -10,6 +10,10 @@ class Menu extends Phaser.Scene {
         this.load.image('Enemy', './assets/cyber_bomb.png')
         this.load.image('starfield', './assets/starfield.png')
         this.load.image('Heart', './assets/cyber_heart.png')
+
+        this.load.audio('explosion','./assets/explosion.mp3')
+        this.load.audio('heart','./assets/Heart.wav')
+        this.load.audio('BGM','./assets/BGM.mp3')
         
 
         
@@ -30,8 +34,10 @@ class Menu extends Phaser.Scene {
       }
         
 
-      this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'CYBER FLY', menuConfig).setOrigin(0.5)
-      this.add.text(game.config.width/2, game.config.height/2, 'Use all arrows to move', menuConfig).setOrigin(0.5)
+      this.add.text(game.config.width/2, game.config.height/5 - borderUISize - borderPadding, 'CYBER FLY', menuConfig).setOrigin(0.5)
+      this.add.text(game.config.width/2, game.config.height/4, 'Use all arrows to move', menuConfig).setOrigin(0.5)
+      this.add.text(game.config.width/2, game.config.height/3, 'Heart: +10 points, Bomb: -5 points', menuConfig).setOrigin(0.5)
+      this.add.text(game.config.width/2, game.config.height/2, 'when score is less than 0, game over', menuConfig).setOrigin(0.5)
       menuConfig.backgroundColor = '#00FF00'
       menuConfig.color = '#000'
       this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press D to start the game', menuConfig).setOrigin(0.5)

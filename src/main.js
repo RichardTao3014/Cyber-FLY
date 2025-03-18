@@ -3,6 +3,9 @@
  * Game Name: Cyber Fly
  * Auther: Richard Tao
  * Development time: 25 H
+ * Players play the game by avoiding bombs and eating hearts. 
+ * If they eat a heart, they will get 10 points. If they eat a bomb, they will lose 5 points. 
+ * When the player's score is less than 0, the game ends.
  */
 // console.log("hello world")
 

@@ -4,6 +4,11 @@ class Play extends Phaser.Scene {
     }
     
     create() {
+      this.heart = this.sound.add('heart')
+      this.explosion = this.sound.add('explosion')
+      this.BGM = this.sound.add('BGM', { loop: true }); 
+
+      this.BGM.play()
         // place tile sprite
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0)
         this.add.text(20, 20, "Cyber FLY Play")
@@ -17,10 +22,48 @@ class Play extends Phaser.Scene {
     this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0)
 
     // add spaceships (x3)
-    this.ship01 = new Enemy(this, game.config.width + borderUISize*6, borderUISize*6, 'Enemy', 0, 5).setOrigin(0, 0)
-    this.ship02 = new Enemy(this, game.config.width + borderUISize*3, borderUISize*7 + borderPadding*2, 'Enemy', 0, 5).setOrigin(0,0)
-    this.ship03 = new Enemy(this, game.config.width, borderUISize*6 + borderPadding*9, 'Enemy', 0, 5).setOrigin(0,0)
-    this.ship04 = new Enemy(this, game.config.width, borderUISize*3 + borderPadding*5, 'Heart', 0, 5).setOrigin(0,0)
+    // this.ship01 = new Enemy(this, game.config.width + borderUISize*6, borderUISize*6, 'Enemy', 0, 5).setOrigin(0, 0)
+    // this.ship02 = new Enemy(this, game.config.width + borderUISize*3, borderUISize*7 + borderPadding*2, 'Enemy', 0, 5).setOrigin(0,0)
+    // this.ship03 = new Enemy(this, game.config.width, borderUISize*5 + borderPadding*7, 'Enemy', 0, 5).setOrigin(0,0)
+    // this.ship04 = new Enemy(this, game.config.width, borderUISize*4 + borderPadding*5, 'Heart', 0, 5).setOrigin(0,0)
+
+     // 随机生成炸弹（Enemy）
+     this.ship01 = new Enemy(
+      this,
+      Phaser.Math.Between(game.config.width / 2, game.config.width), // 随机 X 坐标（右半部分）
+      Phaser.Math.Between(borderUISize, game.config.height - borderUISize), // 随机 Y 坐标
+      'Enemy',
+      0,
+      5
+  ).setOrigin(0, 0);
+
+  this.ship02 = new Enemy(
+      this,
+      Phaser.Math.Between(game.config.width / 2, game.config.width), 
+      Phaser.Math.Between(borderUISize, game.config.height - borderUISize), 
+      'Enemy',
+      0,
+      5
+  ).setOrigin(0, 0);
+
+  this.ship03 = new Enemy(
+      this,
+      Phaser.Math.Between(game.config.width / 2, game.config.width), 
+      Phaser.Math.Between(borderUISize, game.config.height - borderUISize), 
+      'Enemy',
+      0,
+      5
+  ).setOrigin(0, 0);
+
+  // 随机生成心（Heart)
+  this.ship04 = new Enemy(
+      this,
+      Phaser.Math.Between(game.config.width / 2, game.config.width), 
+      Phaser.Math.Between(borderUISize, game.config.height - borderUISize), 
+      'Heart',
+      0,
+      5
+  ).setOrigin(0, 0);
 
 
         this.p1Rocket = new Player(
@@ -66,6 +109,7 @@ class Play extends Phaser.Scene {
                     this.add.text(game.config.width / 2, game.config.height / 2, 'GAME OVER', scoreConfig).setOrigin(0.5);
                     this.add.text(game.config.width / 2, game.config.height / 2 + 64, 'Press (R) to Restart', scoreConfig).setOrigin(0.5);
                     this.gameOver = true;
+                    this.BGM.stop()
                     this.checkGameOver.remove();  // 停止这个事件，避免无限检查
                 }
             }
@@ -91,24 +135,28 @@ class Play extends Phaser.Scene {
         // check collisions
         if(this.checkCollision(this.p1Rocket, this.ship03)) {
           this.ship03.reset()
+          this.explosion.play()
           // score add and text update
           this.p1Score -= 5
           this.scoreLeft.text = this.p1Score 
         }
         if (this.checkCollision(this.p1Rocket, this.ship02)) {
           this.ship02.reset()
+          this.explosion.play()
           // score add and text update
           this.p1Score -= 5
           this.scoreLeft.text = this.p1Score 
         }
         if (this.checkCollision(this.p1Rocket, this.ship01)) {
           this.ship01.reset()
+          this.explosion.play()
           // score add and text update
           this.p1Score -= 5
           this.scoreLeft.text = this.p1Score 
         }
         if (this.checkCollision(this.p1Rocket, this.ship04)) {
           this.ship04.reset()
+          this.heart.play()
           // score add and text update
           this.p1Score += 10
           this.scoreLeft.text = this.p1Score 
